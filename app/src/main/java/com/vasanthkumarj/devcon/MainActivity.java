@@ -3,7 +3,9 @@ package com.vasanthkumarj.devcon;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -36,6 +38,127 @@ public class MainActivity extends AppCompatActivity {
         city=findViewById(R.id.city);
         country=findViewById(R.id.country);
         developerFormValidator=new DeveloperFormValidator();
+
+        firstName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                getDeveloperFormValidator().validateForLetters(firstName);
+            }
+        });
+
+        lastName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                getDeveloperFormValidator().validateForLetters(lastName);
+            }
+        });
+
+        email.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                getDeveloperFormValidator().validateMail(email);
+            }
+        });
+
+        position.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                 getDeveloperFormValidator().validateForLetters(position);
+            }
+        });
+
+        company.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                  getDeveloperFormValidator().validateForLetters(company);
+            }
+        });
+
+        city.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                  getDeveloperFormValidator().validateForLetters(city);
+            }
+        });
+
+        country.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                  getDeveloperFormValidator().validateForLetters(country);
+            }
+        });
+
+
     }
 
     public void createAccount(View view) {
@@ -43,10 +166,10 @@ public class MainActivity extends AppCompatActivity {
         developerModel=new DeveloperModel(firstName,lastName,email,
                                           position,company,city,country);
 
-        getDeveloperFormValidator().validate(developerModel,getApplicationContext());
-
 
     }
+
+
 
     public DeveloperFormValidator getDeveloperFormValidator() {
         return developerFormValidator;
@@ -55,4 +178,6 @@ public class MainActivity extends AppCompatActivity {
     public void setDeveloperFormValidator(DeveloperFormValidator developerFormValidator) {
         this.developerFormValidator = developerFormValidator;
     }
+
+
 }
